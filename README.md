@@ -1,2 +1,585 @@
-# dhanzlow.website
-Web
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dezet.Net - Warnet Modern & Gaming Center</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+        header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-table th, .pricing-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .pricing-table th {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1) !important;
+            font-weight: bold;
+        }
+        
+        .pc-specs {
+            margin-top: 3rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .spec-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .spec-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background: #c0392b;
+        }
+        
+        .map-container {
+            margin-top: 2rem;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .social-links li {
+            margin: 0 0.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            nav {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Dezet<span style="color: var(--primary)">.Net</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#pricing">Harga</a></li>
+                    <li><a href="#specs">Spesifikasi</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Warnet Modern & Gaming Center</h1>
+            <p>Nikmati pengalaman gaming dan browsing terbaik dengan koneksi super cepat dan perangkat berkualitas tinggi</p>
+            <a href="#pricing" class="btn">Lihat Harga</a>
+            <a href="#contact" class="btn btn-accent">Hubungi Kami</a>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Dezet.Net</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Dezet.Net adalah warnet modern yang didesain untuk memberikan pengalaman terbaik baik untuk gaming, bekerja, maupun sekedar browsing. Kami menyediakan lingkungan yang nyaman dengan fasilitas lengkap.</p>
+                    <p>Didirikan pada tahun 2020, kami terus berkomitmen untuk memberikan layanan terbaik dengan teknologi terkini dan staf yang ramah serta profesional.</p>
+                    <p>Lokasi kami strategis di pusat kota dengan akses mudah dan parkir yang luas.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Interior Dezet.Net">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Layanan Kami</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gaming Zone</h3>
+                    <p>Area khusus gaming dengan PC high-end, gaming chair ergonomis, dan koneksi internet dedicated untuk pengalaman gaming tanpa lag.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Work Station</h3>
+                    <p>Area kerja yang nyaman dengan meja luas, kursi ergonomis, dan perangkat lengkap untuk produktivitas maksimal.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>Print & Scan</h3>
+                    <p>Layanan cetak dokumen warna/hitam putih, scan, fotokopi, dan laminating dengan harga terjangkau.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>Cafe Corner</h3>
+                    <p>Area istirahat dengan berbagai minuman dan snack untuk mengisi tenaga selama aktivitas di warnet.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Private Room</h3>
+                    <p>Ruang privat untuk kelompok dengan fasilitas lengkap, cocok untuk meeting atau gaming bersama.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Technical Support</h3>
+                    <p>Bantuan teknis dari staff profesional untuk masalah hardware/software selama menggunakan fasilitas kami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Daftar Harga</h2>
+            <table class="pricing-table">
+                <tr>
+                    <th>Paket</th>
+                    <th>Durasi</th>
+                    <th>Reguler</th>
+                    <th>Gaming</th>
+                    <th>VIP</th>
+                </tr>
+                <tr>
+                    <td>1 Jam</td>
+                    <td>60 menit</td>
+                    <td>Rp 5.000</td>
+                    <td>Rp 7.000</td>
+                    <td>Rp 10.000</td>
+                </tr>
+                <tr class="highlight">
+                    <td>Paket Hemat</td>
+                    <td>5 Jam</td>
+                    <td>Rp 20.000</td>
+                    <td>Rp 30.000</td>
+                    <td>Rp 45.000</td>
+                </tr>
+                <tr>
+                    <td>Paket Siang</td>
+                    <td>10 Jam (08.00-18.00)</td>
+                    <td>Rp 35.000</td>
+                    <td>Rp 50.000</td>
+                    <td>Rp 70.000</td>
+                </tr>
+                <tr>
+                    <td>Paket Malam</td>
+                    <td>10 Jam (20.00-06.00)</td>
+                    <td>Rp 30.000</td>
+                    <td>Rp 45.000</td>
+                    <td>Rp 65.000</td>
+                </tr>
+                <tr class="highlight">
+                    <td>Paket 24 Jam</td>
+                    <td>24 Jam</td>
+                    <td>Rp 60.000</td>
+                    <td>Rp 85.000</td>
+                    <td>Rp 120.000</td>
+                </tr>
+            </table>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p><strong>Promo Member:</strong> Dapatkan diskon 10% untuk pembayaran paket minimal 100 jam</p>
+                <a href="#contact" class="btn">Daftar Member</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="specs" class="pc-specs">
+        <div class="container">
+            <h2 class="section-title">Spesifikasi Komputer</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3><i class="fas fa-desktop"></i> Reguler</h3>
+                    <ul>
+                        <li>Processor: Intel Core i3 10th Gen</li>
+                        <li>RAM: 8GB DDR4</li>
+                        <li>Storage: 256GB SSD</li>
+                        <li>GPU: Intel UHD Graphics</li>
+                        <li>Monitor: 21.5" Full HD</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3><i class="fas fa-gamepad"></i> Gaming</h3>
+                    <ul>
+                        <li>Processor: Intel Core i5 12th Gen</li>
+                        <li>RAM: 16GB DDR4</li>
+                        <li>Storage: 512GB SSD + 1TB HDD</li>
+                        <li>GPU: NVIDIA RTX 3060</li>
+                        <li>Monitor: 24" Full HD 144Hz</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3><i class="fas fa-crown"></i> VIP</h3>
+                    <ul>
+                        <li>Processor: Intel Core i7 13th Gen</li>
+                        <li>RAM: 32GB DDR4</li>
+                        <li>Storage: 1TB NVMe SSD</li>
+                        <li>GPU: NVIDIA RTX 4070</li>
+                        <li>Monitor: 27" QHD 165Hz</li>
+                        <li>Gaming Chair Premium</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-grid">
+                <div>
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jl. Teknologi No. 123, Kel. Digital, Kec. Cyber, Kota Anda</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>(021) 1234-5678 / 0812-3456-7890</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@deznet.com</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-clock"></i>
+                        <span>Buka 24 Jam Setiap Hari</span>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem;">Sosial Media</h3>
+                    <div class="social-links">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Kirim Pesan</h3>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Nama Anda" required>
+                        <input type="email" placeholder="Email Anda" required>
+                        <input type="tel" placeholder="Nomor HP">
+                        <textarea placeholder="Pesan Anda" required></textarea>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81916135000001!3d-6.194741999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnNDEuMSJTIDEwNsKwNDknMDkuMCJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">Dezet<span style="color: var(--primary)">.Net</span></a>
+                <p>Warnet Modern & Gaming Center Terbaik di Kota Anda</p>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+                <p class="copyright">&copy; 2023 Dezet.Net. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
